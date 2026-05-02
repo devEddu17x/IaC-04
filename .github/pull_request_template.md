@@ -1,3 +1,7 @@
+PR title: `feat: ...`, `fix: ...`, or `hotfix: ...` etc
+
+Use a Conventional Commits style format and english languaage for the pull request title.
+
 ## Resumen
 
 ## Tipo de cambio
