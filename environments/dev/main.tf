@@ -21,3 +21,16 @@ module "endpoints" {
   private_subnet_az_b_id     = module.networking.private_subnet_az_b_id
   security_group_vpce_sqs_id = module.security.sg_sqs_vpce_id
 }
+
+module "storage" {
+  source             = "../../modules/storage"
+  env                = "dev"
+  sqs_main_queue_arn = module.sqs.sqs_main_queue_arn
+}
+
+module "sqs" {
+  source               = "../../modules/sqs"
+  env                  = "dev"
+  name_prefix          = var.name_prefix
+  s3_bucket_images_arn = module.storage.s3_bucket_images_arn
+}
