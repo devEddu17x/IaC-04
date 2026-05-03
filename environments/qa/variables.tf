@@ -6,7 +6,6 @@ variable "aws_profile" {
   description = "AWS profile"
   type        = string
 }
-
 variable "env" {
   description = "Environment: dev, qa, prod"
   type        = string
