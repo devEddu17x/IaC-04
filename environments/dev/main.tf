@@ -34,3 +34,9 @@ module "sqs" {
   name_prefix          = var.name_prefix
   s3_bucket_images_arn = module.storage.s3_bucket_images_arn
 }
+
+module "iam" {
+  source               = "../../modules/iam"
+  s3_bucket_images_arn = module.storage.s3_bucket_images_arn
+  sqs_main_queue_arn   = module.sqs.sqs_main_queue_arn
+}
