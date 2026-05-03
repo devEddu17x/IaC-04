@@ -6,6 +6,11 @@ variable "aws_profile" {
   description = "AWS profile"
   type        = string
 }
+
+variable "env" {
+  description = "Environment: dev, qa, prod"
+  type        = string
+}
 variable "name_prefix" {
   description = "Prefix for unique aws resource names"
   type        = string

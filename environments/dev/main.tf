@@ -9,7 +9,7 @@ module "security" {
   source     = "../../modules/security"
   vpc_id     = module.networking.vpc_id
   aws_region = var.aws_region
-  env        = "dev"
+  env        = var.env
 }
 
 module "endpoints" {
@@ -25,13 +25,13 @@ module "endpoints" {
 
 module "storage" {
   source             = "../../modules/storage"
-  env                = "dev"
+  env                = var.env
   sqs_main_queue_arn = module.sqs.sqs_main_queue_arn
 }
 
 module "sqs" {
   source               = "../../modules/sqs"
-  env                  = "dev"
+  env                  = var.env
   name_prefix          = var.name_prefix
   s3_bucket_images_arn = module.storage.s3_bucket_images_arn
 }
@@ -44,7 +44,7 @@ module "iam" {
 
 module "lambda" {
   source                     = "../../modules/lambda"
-  env                        = "dev"
+  env                        = var.env
   s3_bucket_name             = module.storage.s3_bucket_name
   s3_images_upload_prefix    = "uploads"
   s3_images_processed_prefix = "processed"
@@ -60,7 +60,7 @@ module "lambda" {
 
 module "apigateway" {
   source                 = "../../modules/apigateway"
-  env                    = "dev"
+  env                    = var.env
   sign_lambda_invoke_arn = module.lambda.sign_lambda_invoke_arn
   sign_lambda_name       = module.lambda.sign_lambda_name
 }
