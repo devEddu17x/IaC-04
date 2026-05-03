@@ -40,6 +40,7 @@ module "iam" {
   source               = "../../modules/iam"
   s3_bucket_images_arn = module.storage.s3_bucket_images_arn
   sqs_main_queue_arn   = module.sqs.sqs_main_queue_arn
+  env                  = var.env
 }
 
 module "lambda" {
