@@ -6,9 +6,10 @@ module "networking" {
 }
 
 module "security" {
-  source = "../../modules/security"
-  vpc_id = module.networking.vpc_id
-  env    = "dev"
+  source     = "../../modules/security"
+  vpc_id     = module.networking.vpc_id
+  aws_region = var.aws_region
+  env        = "dev"
 }
 
 module "endpoints" {
