@@ -23,17 +23,24 @@ module "endpoints" {
   security_group_vpce_sqs_id = module.security.sg_sqs_vpce_id
 }
 
-module "storage" {
-  source             = "../../modules/storage"
-  env                = var.env
-  sqs_main_queue_arn = module.sqs.sqs_main_queue_arn
+module "sqs" {
+  source      = "../../modules/sqs"
+  env         = var.env
+  name_prefix = var.name_prefix
 }
 
-module "sqs" {
-  source               = "../../modules/sqs"
-  env                  = var.env
-  name_prefix          = var.name_prefix
-  s3_bucket_images_arn = module.storage.s3_bucket_images_arn
+module "storage" {
+  source = "../../modules/storage"
+  env    = var.env
+}
+
+module "integration" {
+  source        = "../../modules/integration"
+  s3_bucket_arn = module.storage.s3_bucket_images_arn
+  s3_bucket_id  = module.storage.s3_bucket_id
+  sqs_queue_arn = module.sqs.sqs_main_queue_arn
+  sqs_queue_url = module.sqs.sqs_main_queue_url
+  depends_on    = [module.sqs, module.storage]
 }
 
 module "iam" {
