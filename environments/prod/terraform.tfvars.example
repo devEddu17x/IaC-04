@@ -1,0 +1,6 @@
+aws_region                    = "us-east-1"
+aws_profile                   = "your_profile"
+aws_availability_zone_main    = "a"
+aws_availability_zone_replica = "b"
+env                           = "prod"
+name_prefix                   = "yourn_name"
