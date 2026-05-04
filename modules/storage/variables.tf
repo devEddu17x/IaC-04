@@ -9,7 +9,3 @@ variable "env" {
   type        = string
 }
 
-variable "sqs_main_queue_arn" {
-  description = "ARN for main sqs queue"
-  type        = string
-}
