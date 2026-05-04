@@ -14,7 +14,6 @@ variable "env" {
 variable "name_prefix" {
   description = "Prefix for unique aws resource names"
   type        = string
-  default     = "eddu"
 }
 variable "aws_availability_zone_main" {
   description = "AWS main availability zone"
