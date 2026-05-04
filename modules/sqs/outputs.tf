@@ -17,3 +17,8 @@ output "sqs_dead_letter_queue_arn" {
   description = "ARN for dead letter sqs queue"
   value       = aws_sqs_queue.dead_letter_queue.arn
 }
+
+output "sqs_main_queue_url" {
+  description = "URL for main sqs queue"
+  value       = aws_sqs_queue.main_queue.id
+}
