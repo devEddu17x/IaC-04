@@ -10,3 +10,7 @@ variable "aws_availability_zone_replica" {
   description = "AWS replica availability zone"
   type        = string
 }
+variable "env" {
+  description = "Environment name"
+  type        = string
+}
